@@ -33,7 +33,7 @@ Solutions :
 
 ##### Cohérence
 
-- Problème de cohérence en cas d'égalité, la première proposition qui a la plus de vote gagne
+- Problème de cohérence en cas d'égalité, la première proposition qui a la plus de vote gagne : Fix
 
 ##### Non critiques
 
