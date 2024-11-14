@@ -7,11 +7,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-const VoterList = () => {
+const ProposalList = () => {
   return (
-    <div className="mt-5">
-      <h1 className="text-2xl">VoterList</h1>
+    <div className="pt-2">
+      <h1 className="text-2xl">ProposalList</h1>
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -35,4 +34,4 @@ const VoterList = () => {
   );
 };
 
-export default VoterList;
+export default ProposalList;
