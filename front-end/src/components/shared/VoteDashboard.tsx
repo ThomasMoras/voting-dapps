@@ -28,6 +28,12 @@ const VoteDashboard = () => {
     functionName: "workflowStatus",
   });
 
+  const { data: winningProposalID } = useReadContract({
+    abi: votingContract.abi,
+    address: votingContract.address,
+    functionName: "winningProposalID",
+  });
+
   const getEvents = async () => {
     const voterEvents = await publicClients.getLogs({
       address: votingContract.address,
@@ -60,6 +66,12 @@ const VoteDashboard = () => {
         Connected with : <strong>{address}</strong>
       </h1>
       <WorkflowState workflow={workflowStatus} />
+
+      {winningProposalID && (
+        <h3 className="text-center mt-4">
+          Proposition gagnante : {winningProposalID}
+        </h3>
+      )}
       <hr className="mt-4 border-t border-gray-300 w-full" />
 
       {votingContract.ownerAddress === address ? (
