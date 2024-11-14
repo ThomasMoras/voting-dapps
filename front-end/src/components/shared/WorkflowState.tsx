@@ -1,7 +1,9 @@
-import React from "react";
-
-const WorkflowState = () => {
-  return <div>WorkflowState</div>;
+const WorkflowState = ({ workflow }: { workflow: any }) => {
+  return (
+    <div>
+      <h1>WorkflowState</h1>
+    </div>
+  );
 };
 
 export default WorkflowState;

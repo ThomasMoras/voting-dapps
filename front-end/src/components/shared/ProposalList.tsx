@@ -10,7 +10,7 @@ import {
 const ProposalList = () => {
   return (
     <div className="pt-2">
-      <h1 className="text-2xl">ProposalList</h1>
+      <h1 className="text-2xl">List of all proposals</h1>
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>

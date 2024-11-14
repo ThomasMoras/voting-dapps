@@ -71,11 +71,7 @@ const AdminPanel = ({
     }
   };
 
-  console.log("workflow : ", workflow);
-
   const goToNextStep = async (workflowNumber: number) => {
-    console.log("workflownumber : ", workflowNumber);
-
     switch (workflowNumber) {
       case 1:
         try {
