@@ -65,7 +65,6 @@ const AdminPanel = ({
   };
 
   const tallyVote = async () => {
-    console.log("tally vote");
     try {
       const result = writeContract({
         address: votingContract.address,

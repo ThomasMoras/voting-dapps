@@ -17,14 +17,12 @@ const VoterList = ({ voters }) => {
         <TableCaption>All registred voters</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Id</TableHead>
             <TableHead>Address</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {voters.map((voter, index) => (
             <TableRow key={index}>
-              <TableCell className="font-medium">{voter.logIndex}</TableCell>
               <TableCell>{"0x" + voter.data.slice(26)}</TableCell>
             </TableRow>
           ))}

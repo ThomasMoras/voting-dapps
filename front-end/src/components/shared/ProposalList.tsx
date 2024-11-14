@@ -7,27 +7,29 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-const ProposalList = () => {
+interface Proposal {
+  logIndex: number;
+  id: number;
+}
+
+const ProposalList = ({ proposals }: { proposals: Proposal[] }) => {
+  console.log("List of proposals: ", proposals);
   return (
     <div className="pt-2">
       <h1 className="text-2xl">List of all proposals</h1>
       <Table>
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>A list of your recent proposals.</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Invoice</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead>Method</TableHead>
-            <TableHead className="text-right">Amount</TableHead>
+            <TableHead>Proposal ID</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">INV001</TableCell>
-            <TableCell>Paid</TableCell>
-            <TableCell>Credit Card</TableCell>
-            <TableCell className="text-right">$250.00</TableCell>
-          </TableRow>
+          {proposals.map((proposal, index) => (
+            <TableRow key={index}>
+              <TableCell>{proposal.data.toString().slice(-1)}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>

@@ -27,9 +27,7 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
           functionName: "addProposal",
           args: [proposalDescription],
         });
-        console.log("Transaction result:", result);
       } catch (error) {
-        console.log("Error during contract call:", error);
         if (error instanceof Error) {
           if (
             error.message.includes(
@@ -37,14 +35,12 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
             )
           ) {
             const customErrorMessage = error.message.split("revert ")[1];
-            console.log("Custom error message:", customErrorMessage);
             toast({
               title: "Error",
               description: customErrorMessage,
               className: "bg-red-400",
             });
           } else {
-            console.log("Unexpected error:", error);
             toast({
               title: "Error",
               description: "Unexpected error",
@@ -52,7 +48,6 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
             });
           }
         } else {
-          console.log("Unexpected error:", error);
           toast({
             title: "Error",
             description: "Unexpected error",
@@ -77,9 +72,7 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
           functionName: "setVote",
           args: [proposalId],
         });
-        console.log("Transaction result:", result);
       } catch (error) {
-        console.log("Error during contract call:", error);
         if (error instanceof Error) {
           if (
             error.message.includes(
@@ -87,14 +80,12 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
             )
           ) {
             const customErrorMessage = error.message.split("revert ")[1];
-            console.log("Custom error message:", customErrorMessage);
             toast({
               title: "Error",
               description: customErrorMessage,
               className: "bg-red-400",
             });
           } else {
-            console.log("Unexpected error:", error);
             toast({
               title: "Error",
               description: "Unexpected error",
@@ -102,7 +93,6 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
             });
           }
         } else {
-          console.log("Unexpected error:", error);
           toast({
             title: "Error",
             description: "Unexpected error",
@@ -136,7 +126,14 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
       </div>
       <h2 className="text-xl pt-3">Vote</h2>
       <div className="flex flex-col items-center">
-        <h2 className="text-xl pt-3">Proposal List</h2>
+        <h2 className="text-xl pt-3">Availables proposals</h2>
+        <ul className="mt-3 w-1/2">
+          {listProposal.map((proposal, index) => (
+            <li key={index} className="border-b py-2">
+              {proposal.substring(proposal.length - 1)}
+            </li>
+          ))}
+        </ul>
         <Input
           className="mt-3 w-1/2"
           placeholder="Proposal ID"
