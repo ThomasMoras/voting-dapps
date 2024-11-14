@@ -18,7 +18,7 @@ const ProposalList = ({ proposals }: { proposals: Proposal[] }) => {
     <div className="pt-2">
       <h1 className="text-2xl">List of all proposals</h1>
       <Table>
-        <TableCaption>A list of your recent proposals.</TableCaption>
+        <TableCaption>list of proposals id</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead>Proposal ID</TableHead>
