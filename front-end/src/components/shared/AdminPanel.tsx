@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  useAccount,
-  useReadContract,
-  useWriteContract,
-  useWaitForTransactionReceipt,
-} from "wagmi";
+import { useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { votingContract } from "@/contracts/voting.contract";
@@ -18,8 +13,6 @@ const AdminPanel = ({
   refetch: () => void;
   workflow: any;
 }) => {
-  // const { adminAdress } = useAccount();
-
   const [voterAddress, setVoterAddress] = useState("");
   const { data: hash, isPending, error, writeContract } = useWriteContract();
 
@@ -68,6 +61,26 @@ const AdminPanel = ({
         description: "Please set a valid voter address.",
         className: "bg-red-400",
       });
+    }
+  };
+
+  const tallyVote = async () => {
+    console.log("tally vote");
+    try {
+      const result = writeContract({
+        address: votingContract.address,
+        abi: votingContract.abi,
+        functionName: "tallyVotes",
+      });
+    } catch (error) {
+      if (error instanceof Error) {
+      } else {
+        toast({
+          title: "Error",
+          description: "Unexpected error",
+          className: "bg-red-400",
+        });
+      }
     }
   };
 
@@ -165,7 +178,7 @@ const AdminPanel = ({
       <div className="flex justify-center mt-5">
         <Button
           className="bg-emerald-600 hover:bg-emerald-400 w-40 text-lg"
-          onClick={() => console.log("tally vote")}
+          onClick={tallyVote}
           disabled={workflow != 4}
         >
           Tally vote

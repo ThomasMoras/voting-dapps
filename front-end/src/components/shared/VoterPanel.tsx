@@ -68,9 +68,8 @@ const VoterPanel: React.FC<VoterPanelProps> = ({ refetch, proposals }) => {
       });
     }
   };
-
   const submitVote = async () => {
-    if (proposalDescription?.trim()) {
+    if (!isNaN(proposalId)) {
       try {
         const result = writeContract({
           address: votingContract.address,

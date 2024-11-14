@@ -13,9 +13,9 @@ import { publicClients } from "@/lib/client";
 const VoteDashboard = () => {
   const [voters, setVoters] = useState<[]>([]);
   const [proposals, setProposals] = useState<[]>([]);
+  const [isVoter, setVoter] = useState(true);
 
   const { address } = useAccount();
-  const isVoter = true;
 
   const {
     data: workflowStatus,
@@ -48,7 +48,6 @@ const VoteDashboard = () => {
 
     setProposals(proposalEvents);
   };
-  console.log("proposals : ", proposals);
 
   useEffect(() => {
     refetch();
@@ -57,7 +56,9 @@ const VoteDashboard = () => {
 
   return (
     <div>
-      <h1 className="text-center">Connected with : {address}</h1>
+      <h1 className="text-center">
+        Connected with : <strong>{address}</strong>
+      </h1>
       <WorkflowState workflow={workflowStatus} />
       <hr className="mt-4 border-t border-gray-300 w-full" />
 

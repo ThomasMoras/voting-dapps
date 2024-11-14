@@ -3,7 +3,7 @@ import { hardhat, holesky, mainnet, polygon } from "viem/chains";
 
 export const publicClients = createPublicClient({
   chain: hardhat,
-  transport: http(),
+  transport: http("http://127.0.0.1:8545/"),
 });
 
 // hardhat: createPublicClient({
